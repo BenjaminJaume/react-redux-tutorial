@@ -1,12 +1,6 @@
-import { combineReducers, createStore } from "redux";
+import { createStore } from "redux";
 
-import cakeReducer from "./cake/cakeReducer";
-import shopkeeperReducer from "./shopkeeper/shopkeeperReducer";
-
-const rootReducer = combineReducers({
-  cake: cakeReducer,
-  shopkeeper: shopkeeperReducer,
-});
+import rootReducer from "./rootReducer";
 
 const store = createStore(rootReducer);
 

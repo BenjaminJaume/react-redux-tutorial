@@ -5,6 +5,7 @@ const shopkeeperReducer = (state = initialState, action) => {
   switch (action.type) {
     case CHANGE_SHOPKEEPER_NAME:
       return {
+        ...state,
         shopkeeperName: action.shopkeeperName,
         age: action.age,
       };
