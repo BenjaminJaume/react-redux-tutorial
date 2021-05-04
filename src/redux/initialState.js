@@ -3,4 +3,8 @@ export const initialState = {
   shopkeeperName: "Mathis",
   age: 25,
   numberOfIceCream: 20,
+
+  loading: false,
+  data: [],
+  error: "",
 };
