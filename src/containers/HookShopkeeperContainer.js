@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { changeShopkeeperName } from "../redux";
 import { ProgressBar, Form } from "react-bootstrap";
@@ -15,6 +15,11 @@ function HookShopkeeperContainer() {
   const colors = ["primary", "success", "warning"];
   const [variant, setVariant] = useState(colors[0]);
   const dispatch = useDispatch();
+  const [payloadShopkeeper, setPayloadShopkeeper] = useState({});
+
+  useEffect(() => {
+    setPayloadShopkeeper({ shopkeeperName: newShopkeeperName, age: newAge });
+  }, [newShopkeeperName, newAge]);
 
   const progressInstance = (
     <ProgressBar variant={variant} now={progress} label={`${progress}%`} />
@@ -60,23 +65,19 @@ function HookShopkeeperContainer() {
         </div>
         <div>
           {colors.map((color, index) => (
-            <>
-              <Form.Check
-                key={index}
-                inline
-                label={color}
-                name="colorSelectorGroup"
-                type="radio"
-                id={`inline-radio-${index}`}
-                onChange={() => setVariant(color)}
-              />
-            </>
+            <Form.Check
+              key={index}
+              inline
+              label={color}
+              name="colorSelectorGroup"
+              type="radio"
+              id={`inline-radio-${index}`}
+              onChange={() => setVariant(color)}
+            />
           ))}
         </div>
         <button
-          onClick={() =>
-            dispatch(changeShopkeeperName(newShopkeeperName, newAge))
-          }
+          onClick={() => dispatch(changeShopkeeperName(payloadShopkeeper))}
         >
           Submit
         </button>

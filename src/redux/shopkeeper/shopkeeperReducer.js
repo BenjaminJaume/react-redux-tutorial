@@ -6,8 +6,8 @@ const shopkeeperReducer = (state = initialState, action) => {
     case CHANGE_SHOPKEEPER_NAME:
       return {
         ...state,
-        shopkeeperName: action.shopkeeperName,
-        age: action.age,
+        shopkeeperName: action.payload.shopkeeperName,
+        age: action.payload.age,
       };
     default:
       return state;
